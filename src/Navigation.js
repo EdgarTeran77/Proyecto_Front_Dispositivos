@@ -81,7 +81,7 @@ const TabNavigator = () => (
       options={{
         tabBarLabel: 'Eventos',
         tabBarIcon: ({ color }) => (
-          <EvilIcons name="calendar" size={40} color={color} />
+          <EvilIcons name="calendar" size={40} color={'red'} />
         ),
         headerShown: false
       }}
@@ -107,7 +107,7 @@ const TabNavigator = () => (
       options={{
         tabBarLabel: 'Notificaciones',
         tabBarIcon: ({ color }) => (
-          <EvilIcons name="bell" size={40} color={color} />
+          <EvilIcons name="bell" size={40} color={'orange'} />
         ),
         headerShown: false
       }}
@@ -118,7 +118,7 @@ const TabNavigator = () => (
       options={{
         tabBarLabel: 'Perfil',
         tabBarIcon: ({ color }) => (
-          <EvilIcons name="user" size={40} color={color} />
+          <EvilIcons name="user" size={40} color={'green'} />
         ),
         headerShown: false
       }}
