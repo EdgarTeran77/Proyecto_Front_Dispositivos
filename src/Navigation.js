@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { EvilIcons } from '@expo/vector-icons';
@@ -46,7 +46,7 @@ const TabNavigator = () => (
   <Tab.Navigator
     initialRouteName="Home"
     tabBarOptions={{
-      style: {
+      tabBarStyle: {
         position: 'absolute',
         bottom: 25,
         left: 20,
@@ -60,13 +60,14 @@ const TabNavigator = () => (
         alignItems: 'center',
         ...StyleSheet.absoluteFillObject,
       }
-    }}>
+    }}
+  >
     <Tab.Screen
       name="Home"
       component={HomeStack}
       options={{
         tabBarLabel: '', 
-        tabBarIcon: () => (
+        tabBarIcon: ({ color }) => (
           <Image
             source={require('../images/in.png')}
             style={{ width: 50, height: 50, marginTop: 10 }}
@@ -87,11 +88,11 @@ const TabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Crear"
+      name="Create"
       component={CreateEventStack}
       options={{
         tabBarLabel: '',
-        tabBarIcon: () => (
+        tabBarIcon: ({ color }) => (
           <Image
             source={require('../images/mas.png')}
             style={{ width: 40, height: 40, marginTop: 10 }}
