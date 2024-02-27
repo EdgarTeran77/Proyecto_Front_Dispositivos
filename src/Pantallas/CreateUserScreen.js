@@ -36,7 +36,7 @@ export default function App() {
           uri: imageUri,
         });
 
-        const response = await fetch('http://192.168.0.103:5001/subir-imagen', {
+        const response = await fetch('http://192.168.100.21:5001/subir-imagen', {
           method: 'POST',
           headers: {
             'Content-Type': 'multipart/form-data',

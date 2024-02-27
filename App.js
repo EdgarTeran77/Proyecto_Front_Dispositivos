@@ -7,6 +7,7 @@ import TabNavigator from './src/Navigation';
 import CreateUserScreen from './src/Pantallas/CreateUserScreen'; 
 import SeleccionGustosScreen from './src/Pantallas/GustosScreen';
 import CreateUserScreen1 from './src/Pantallas/CreateUserScreen1'; 
+import EventDetailsScreen from './src/Pantallas/EventsDetailsScreen';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Screen name="SeleccionGustosScreen" component={SeleccionGustosScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CreateUserScreen" component={CreateUserScreen} options={{ headerShown: false }} />
         <Stack.Screen name="CreateUserScreen1" component={CreateUserScreen1} options={{ headerShown: false }} />
+        <Stack.Screen name="EventDetailsScreen" component={EventDetailsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="TabNavigator" options={{headerShown: false}}>
           {() => <TabNavigator />}
         </Stack.Screen>

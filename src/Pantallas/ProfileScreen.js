@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -13,7 +13,7 @@ const ProfileScreen = ({ navigation }) => {
     const fetchUserData = async () => {
       try {
         const token = await AsyncStorage.getItem('accessToken');
-        const response = await fetch('http://192.168.237.37:5001/profile', {
+        const response = await fetch('http://192.168.100.21:5001/profile', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -24,7 +24,7 @@ const ProfileScreen = ({ navigation }) => {
           const userData = await response.json();
           console.log(userData);
           setUserData(userData);
-          // Obtener la imagen del perfil desde los datos del usuario
+          
           if (userData.imagen_base64) {
             setProfileImage(`data:image/jpeg;base64,${userData.imagen_base64}`);
           }
@@ -42,7 +42,7 @@ const ProfileScreen = ({ navigation }) => {
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem('accessToken');
-      const response = await fetch('http://192.168.0.100:5001/logout', {
+      const response = await fetch('http://192.168.100.21:5001/logout', {
         method: 'DELETE',
         credentials: 'include',
         headers: {
@@ -166,93 +166,6 @@ const styles = StyleSheet.create({
     top:"-2%",
     left:"3%"
   },
-=======
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-
-const ProfileScreen = () => {
-    return (
-        <View style={styles.container}>
-            {/* Foto de perfil */}
-            <View style={styles.profileContainer}>
-                <View style={styles.profileImage}></View>
-                <View style={styles.profileInfo}>
-                    <Text style={styles.name}>Nombre del Usuario</Text>
-                    <Text style={styles.date}>Fecha</Text>
-                </View>
-            </View>
-
-            {/* Cuenta */}
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Cuenta</Text>
-            </TouchableOpacity>
-
-            {/* Detalles personales */}
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Detalles Personales</Text>
-                <Text style={styles.subOptionText}>Información y Permisos</Text>
-            </TouchableOpacity>
-
-            {/* Configuraciones */}
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Configuraciones</Text>
-                <Text style={styles.subOptionText}>Privacidad</Text>
-                <Text style={styles.subOptionText}>Idioma</Text>
-                <Text style={styles.subOptionText}>Ayuda y Soporte</Text>
-            </TouchableOpacity>
-
-            {/* Cerrar Sesión */}
-            <TouchableOpacity style={styles.option}>
-                <Text style={styles.optionText}>Cerrar Sesión</Text>
-                <Text style={styles.subOptionText}>Borrar Cuenta</Text>
-            </TouchableOpacity>
-        </View>
-    );
-};
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 20,
-        paddingTop: 40,
-    },
-    profileContainer: {
-        flexDirection: 'row',
-        marginBottom: 20,
-    },
-    profileImage: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        backgroundColor: 'gray', // Placeholder color
-    },
-    profileInfo: {
-        marginLeft: 20,
-        justifyContent: 'center',
-    },
-    name: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    date: {
-        fontSize: 16,
-        marginTop: 5,
-    },
-    option: {
-        marginBottom: 20,
-    },
-    optionText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-    subOptionText: {
-        fontSize: 16,
-        marginLeft: 20,
-    },
->>>>>>> 01000e3d0c2ede1a536e874e7d3691766d9d7179
-});
+})
 
 export default ProfileScreen;
-
-

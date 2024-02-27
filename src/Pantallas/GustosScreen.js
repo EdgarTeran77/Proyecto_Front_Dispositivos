@@ -7,11 +7,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const SeleccionGustosScreen = ({ navigation }) => {
   const [gustos, setGustos] = useState([]);
   const [gustosSeleccionados, setGustosSeleccionados] = useState([]);
-  const [userId, setUserId] = useState(null); // Estado para almacenar el ID de usuario
+  const [userId, setUserId] = useState(null); 
 
   useEffect(() => {
     obtenerGustos();
-    obtenerUserId(); // Obtener el ID de usuario al cargar la pantalla
+    obtenerUserId(); 
   }, []);
 
   const obtenerUserId = async () => {
@@ -44,15 +44,14 @@ const SeleccionGustosScreen = ({ navigation }) => {
     try {
       const token = await AsyncStorage.getItem('accessToken');
 
-      // Verificar si se pudo obtener el ID de usuario
       if (!userId) {
         throw new Error('ID de usuario no disponible');
       }
 
       const response = await axios.post(
-        'http://192.168.100.21:5001/guardar-gustos',
+        'http://192.168.0.103:5001/guardar-gustos',
         {
-          usuario_id: userId, // Utilizar el ID de usuario obtenido
+          usuario_id: userId, 
           gustos: gustosSeleccionados
         },
         {

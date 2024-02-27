@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'reac
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CreateUserScreen from './CreateUserScreen'; 
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -12,7 +11,7 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://192.168.237.37:5001/login', {
+      const response = await fetch('http://192.168.100.21:5001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +22,7 @@ const LoginScreen = () => {
         }),
       });
       const data = await response.json();
-      console.log('Data:', data); // Aquí se imprime el contenido de 'data'
+      console.log('Data:', data);
       if (response.ok) {
         // Guarda el token de acceso en AsyncStorage
         await AsyncStorage.setItem('accessToken', data.access_token);
@@ -41,16 +40,13 @@ const LoginScreen = () => {
         }
       } else {
         console.error('Error:', data.message);
-        // Maneja errores de inicio de sesión aquí
       }
     } catch (error) {
       console.error('Error:', error);
-      // Maneja errores de red u otros errores aquí
     }
   };
 
   const handleRegister = () => {
-    // Navegar al componente CreateUserScreen al hacer clic en el botón de registro
     navigation.navigate('CreateUserScreen1');
   }
 
